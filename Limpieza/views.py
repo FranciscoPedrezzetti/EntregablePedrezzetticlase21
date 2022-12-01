@@ -73,7 +73,7 @@ def formulariodescartables(request):
         formulario=descaForm()
 
 
-    return render (request, "formulariodescartables.html", {"form":formulario})
+    return render (request, "formulariodescartable.html", {"form":formulario})
 
 def busqueda(request):
     return render(request, "busqueda.html")

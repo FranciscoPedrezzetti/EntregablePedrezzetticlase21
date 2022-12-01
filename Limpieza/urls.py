@@ -8,6 +8,8 @@ urlpatterns = [
     path("descartables/", descartables, name="descartables"),
     path("", inicio, name="inicio"),
     path("formularioquimicos/", formularioquimicos, name="formularioquimicos"),
+    path("formulariocepillos/", formulariocepillos, name="formulariocepillos"),
+    path("formulariodescartables/", formulariodescartables, name="formulariodescartables"),
     path("busqueda/", busqueda, name="busqueda"),
     path("buscar/", buscar, name="buscar" ),
 ]
