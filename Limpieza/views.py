@@ -10,13 +10,58 @@ def inicio(request):
     return render (request, "inicio.html")
 
 def quimicos(request):
-    return render (request, "quimicos.html")
+
+   if request.method=="POST":
+        form=quimForm(request.POST)
+        if form.is_valid():
+            informacion=form.cleaned_data
+            print(informacion)
+            nombre=informacion["nombre"]
+            proveedor=informacion["proveedor"]
+            prodxbulto=informacion["prodxbulto"]
+            quimi=Quimico(nombre=nombre, proveedor=proveedor, prodxbulto=prodxbulto)
+            quimi.save()
+            return render (request, "inicio.html", {"mensaje": "PRODUCTO QUIMICO CREADO CORRECTAMENTE!!"})
+   else:
+        formulario=quimForm()
+
+   return render (request, "quimicos.html", {"form":formulario})
 
 def cepillos(request):
-    return render (request, "cepillos.html")
+    if request.method=="POST":
+        form=cepiForm(request.POST)
+        if form.is_valid():
+            informacion=form.cleaned_data
+            print(informacion)
+            nombre=informacion["nombre"]
+            proveedor=informacion["proveedor"]
+            prodxbulto=informacion["prodxbulto"]
+            cepi= Cepillo(nombre=nombre, proveedor=proveedor, prodxbulto=prodxbulto)
+            cepi.save()
+            return render (request, "inicio.html", {"mensaje": "CEPILLO CREADO CORRECTAMENTE!!"})
+    else:
+        formulario=cepiForm()
+
+
+    return render (request, "cepillos.html", {"form":formulario})
 
 def descartables(request):
-    return render (request, "descartables.html")
+    if request.method=="POST":
+        form=descaForm(request.POST)
+        if form.is_valid():
+            informacion=form.cleaned_data
+            print(informacion)
+            nombre=informacion["nombre"]
+            proveedor=informacion["proveedor"]
+            prodxbulto=informacion["prodxbulto"]
+            desca= Descartable(nombre=nombre, proveedor=proveedor, prodxbulto=prodxbulto)
+            desca.save()
+            return render (request, "inicio.html", {"mensaje": "PRODUCTO DESCARTABLE CREADO CORRECTAMENTE!!"})
+    else:
+        formulario=descaForm()
+
+
+    return render (request, "descartableS.html", {"form":formulario})
 
 def formularioquimicos(request):
 
